@@ -1,0 +1,8 @@
+<%-include("partials/header"); -%>
+<h1>Today listings:</h1>
+<p><%= startingContent %></p>
+
+<% posts.forEach(function(post){ %>
+<a href="/posts/<%=post.title%>"><h1><%=post.title%></h1></a>
+<!-- <p><%=post.description %></p> -->
+<%}) %> <%-include('partials/footer'); -%>
