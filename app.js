@@ -106,6 +106,6 @@ let dayYear = monthName[month.getMonth()] + " " + day;
 console.log(dayYear);
 
 //server route
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
 });
