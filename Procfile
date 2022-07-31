@@ -1,3 +1,1 @@
-"scripts": {
-  "start": "node app.js"
-}
+web: node app.js
