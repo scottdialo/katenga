@@ -30,6 +30,7 @@ app.use(express.static("public"));
 
 ///global variables
 const posts = [];
+const carsPosts = [];
 
 app.get("/", function (req, res) {
   res.render("home", {
@@ -145,6 +146,18 @@ app.get("/carsCompose", function (req, res) {
     const carLocation = req.body.carLocation;
     console.log(carTitle);
 
+    //car post object
+    const carPost = {
+      carTitle: req.body.carTitle,
+      carBrand: req.body.carBrand,
+      carModel: req.body.carModel,
+      carMileage: req.body.carMileage,
+      carYear: req.body.carYear,
+      carColor: req.body.carColor,
+      carLocation: req.body.carLocation,
+    };
+    carsPosts.push(carPost);
+    console.log(carsPosts);
     res.redirect("/carsTrucksHome");
   });
 });
