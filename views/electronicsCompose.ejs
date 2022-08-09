@@ -1,0 +1,35 @@
+<%-include("partials/header"); -%>
+
+<h1 class="post-header">List a Phone | Computer | Tablet</h1>
+
+<form action="/electronicsCompose.ejs" method="post">
+  <div id="form-group">
+    <label for="title">Posting Title</label>
+    <input class="form-control" type="text" name="carTitle" required />
+    <label for="brand">Brand</label>
+    <input class="form-control" type="text" name="carBrand" />
+    <label for="brand">Model</label>
+    <input class="form-control" type="text" name="carModel" />
+
+    <label for="brand">Color</label>
+    <input class="form-control" type="text" name="carColor" />
+    <label for="location">Location</label>
+    <input class="form-control" type="text" name="carLocation" />
+    <label for="price">Price $</label>
+    <input class="form-control" type="text" name="carPrice" />
+    <label for="tel">Phone Number</label>
+    <input class="form-control" type="number" name="tel" />
+    <label for="">Description</label>
+    <textarea
+      class="form-control"
+      name="description"
+      value=""
+      id=""
+      cols="30"
+      rows="5"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit">Post listing</button>
+</form>
+
+<%-include("partials/footer"); -%>

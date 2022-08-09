@@ -132,6 +132,7 @@ app.get("/posts/:postName", function (req, res) {
 //cars compose form and get route
 app.get("/carsTrucksHome", function (req, res) {
   res.render("carsTrucksHome");
+  carsPosts: carsPosts;
 });
 app.get("/carsCompose", function (req, res) {
   res.render("carsCompose");
@@ -162,6 +163,19 @@ app.get("/carsCompose", function (req, res) {
   });
 });
 
+//get route for electronics
+
+app.get("/electronicsHome", function (req, res) {
+  res.render("electronicsHome");
+});
+
+app.get("/electronicsCompose", function (req, res) {
+  res.render("electronicsCompose");
+
+  app.post("/electronicsCompose", function (req, res) {
+    const electronictTitle = req.body.electronictTitle;
+  });
+});
 //server route
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
