@@ -121,6 +121,8 @@ app.get("/posts/:postName", function (req, res) {
       res.render("post", {
         title: post.title,
         description: post.description,
+        price: post.price,
+        tel: post.tel,
       });
     }
   });
