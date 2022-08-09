@@ -158,14 +158,14 @@ app.get("/carsPosts/:carPostName", function (req, res) {
     const storedCarTitle = _.lowerCase(carPost.carTitle);
 
     if (storedCarTitle === requestedCarTitle) {
-      res.render("carPost", {
-        carTitle: req.body.carTitle,
-        carBrand: req.body.carBrand,
-        carModel: req.body.carModel,
-        carMileage: req.body.carMileage,
-        carYear: req.body.carYear,
-        carColor: req.body.carColor,
-        carLocation: req.body.carLocation,
+      res.render("carsPosts", {
+        carTitle: carPost.carTitle,
+        carBrand: carPost.carBrand,
+        carModel: carPost.carModel,
+        carMileage: carPost.carMileage,
+        carYear: carPost.carYear,
+        carColor: carPost.carColor,
+        carLocation: carPost.carLocation,
       });
     }
   });
