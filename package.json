@@ -1,12 +1,12 @@
 {
-  "name": "ejs-challenge",
+  "name": "real-estate-web-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app for buying and selling real estate assets.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Scott Dialo",
   "license": "ISC",
   "engines": {
     "node": "16.14.0"

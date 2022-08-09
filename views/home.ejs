@@ -3,6 +3,7 @@
 <p><%= startingContent %></p>
 
 <% posts.forEach(function(post){ %>
-<a href="/posts/<%=post.title%>"><h1><%=post.title%></h1></a>
+<a href="/posts/<%=post.title%>"><h1><%=post.title%></h1></a
+><span>$<%= post.price %></span>
 <!-- <p><%=post.description %></p> -->
 <%}) %> <%-include('partials/footer'); -%>

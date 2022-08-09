@@ -36,7 +36,45 @@ app.get("/", function (req, res) {
     startingContent: homeStartingContent,
     posts: posts,
   });
+
+  // const monthName = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "Jun",
+  //   "Jul",
+  //   "Aug",
+  //   "Sep",
+  //   "Oct",
+  //   "Nov",
+  //   "Dec",
+  // ];
+
+  // const day = new Date().getDate();
+  // const month = new Date();
+  // let dayYear = monthName[month.getMonth()] + " " + day;
+  // console.log(dayYear);
 });
+const monthName = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const day = new Date().getDate();
+const month = new Date();
+let dayYear = monthName[month.getMonth()] + " " + day;
+console.log(dayYear);
 
 app.get("/about", function (req, res) {
   res.render("about", { aboutStartingContent: aboutContent });
@@ -51,10 +89,13 @@ app.get("/compose", function (req, res) {
 
   //post route
   app.post("/compose", function (req, res) {
+    //date next to post title
+
     const title = req.body.title;
     const price = req.body.price;
     const tel = req.body.tel;
     const description = req.body.description;
+    const listingDate = dayYear;
 
     const post = {
       title: req.body.title,
@@ -84,26 +125,6 @@ app.get("/posts/:postName", function (req, res) {
     }
   });
 });
-//date next to post title
-const monthName = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-const day = new Date().getDate();
-const month = new Date();
-let dayYear = monthName[month.getMonth()] + " " + day;
-console.log(dayYear);
 
 //server route
 app.listen(process.env.PORT || 3000, function () {
