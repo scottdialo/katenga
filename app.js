@@ -37,26 +37,6 @@ app.get("/", function (req, res) {
     startingContent: homeStartingContent,
     posts: posts,
   });
-
-  // const monthName = [
-  //   "Jan",
-  //   "Feb",
-  //   "Mar",
-  //   "Apr",
-  //   "May",
-  //   "Jun",
-  //   "Jul",
-  //   "Aug",
-  //   "Sep",
-  //   "Oct",
-  //   "Nov",
-  //   "Dec",
-  // ];
-
-  // const day = new Date().getDate();
-  // const month = new Date();
-  // let dayYear = monthName[month.getMonth()] + " " + day;
-  // console.log(dayYear);
 });
 const monthName = [
   "Jan",
@@ -121,9 +101,9 @@ app.get("/posts/:postName", function (req, res) {
     if (storedTitle === requestedTitle) {
       res.render("post", {
         title: post.title,
-        description: post.description,
         price: post.price,
         tel: post.tel,
+        description: post.description,
       });
     }
   });
@@ -131,8 +111,10 @@ app.get("/posts/:postName", function (req, res) {
 
 //cars compose form and get route
 app.get("/carsTrucksHome", function (req, res) {
-  res.render("carsTrucksHome");
-  carsPosts: carsPosts;
+  res.render("carsTrucksHome", {
+    startingContent: homeStartingContent,
+    carsPosts: carsPosts,
+  });
 });
 app.get("/carsCompose", function (req, res) {
   res.render("carsCompose");
@@ -158,8 +140,31 @@ app.get("/carsCompose", function (req, res) {
       carLocation: req.body.carLocation,
     };
     carsPosts.push(carPost);
+
     console.log(carsPosts);
+
     res.redirect("/carsTrucksHome");
+  });
+});
+
+// dynamic route for car listing
+app.get("/carsPosts/:carPostName", function (req, res) {
+  const requestedCarTitle = _.lowerCase(req.params.carPostName);
+
+  carsPosts.forEach(function (carPost) {
+    const storedCarTitle = _.lowerCase(carPost.carTitle);
+
+    if (storedCarTitle === requestedCarTitle) {
+      res.render("carPost", {
+        carTitle: req.body.carTitle,
+        carBrand: req.body.carBrand,
+        carModel: req.body.carModel,
+        carMileage: req.body.carMileage,
+        carYear: req.body.carYear,
+        carColor: req.body.carColor,
+        carLocation: req.body.carLocation,
+      });
+    }
   });
 });
 
