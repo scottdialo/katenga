@@ -128,6 +128,13 @@ app.get("/posts/:postName", function (req, res) {
   });
 });
 
+//cars compose form and get route
+app.get("/carsTrucksHome", function (req, res) {
+  res.render("carsTrucksHome");
+});
+app.get("/carsCompose", function (req, res) {
+  res.render("carsCompose");
+});
 //server route
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
