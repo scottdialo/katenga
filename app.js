@@ -121,26 +121,30 @@ app.get("/carsCompose", function (req, res) {
 
   app.post("/carsCompose", function (req, res) {
     const carTitle = req.body.carTitle;
+    const carPrice = req.body.carPrice;
+    const carTel = req.body.carTel;
     const carBrand = req.body.carBrand;
     const carModel = req.body.carModel;
     const carMileage = req.body.carMileage;
     const carYear = req.body.carYear;
     const carColor = req.body.carColor;
     const carLocation = req.body.carLocation;
+    const carDescription = req.body.carDescription;
+
     console.log(carTitle);
 
     //car post object
     const carPost = {
-      carTitle: req.body.carTitle,
-      carBrand: req.body.carBrand,
-      carModel: req.body.carModel,
-      carMileage: req.body.carMileage,
-      carYear: req.body.carYear,
-      carColor: req.body.carColor,
-      carLocation: req.body.carLocation,
-      carPrice: req.body.carPrice,
-      carTel: req.body.carTel,
-      carDescription: req.body.carDescription,
+      carTitle: carTitle,
+      carPrice: carPrice,
+      carBrand: carBrand,
+      carModel: carModel,
+      carMileage: carMileage,
+      carYear: carYear,
+      carColor: carColor,
+      carLocation: carLocation,
+      carTel: carTel,
+      carDescription: carDescription,
     };
     carsPosts.push(carPost);
 
@@ -160,12 +164,15 @@ app.get("/carsPosts/:carPostName", function (req, res) {
     if (storedCarTitle === requestedCarTitle) {
       res.render("carsPosts", {
         carTitle: carPost.carTitle,
+        carPrice: carPost.carPrice,
+        carTel: carPost.carTel,
         carBrand: carPost.carBrand,
         carModel: carPost.carModel,
         carMileage: carPost.carMileage,
         carYear: carPost.carYear,
         carColor: carPost.carColor,
         carLocation: carPost.carLocation,
+        carDescription: carPost.carDescription,
       });
     }
   });

@@ -8,7 +8,10 @@
 <h1>Today listings:</h1>
 
 <!-- car post home page -->
+
 <% carsPosts.forEach(function(carPost){ %>
+<hr />
+
 <a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
 ><span><b>Price: </b> $<%= carPost.carPrice %></span>
 
