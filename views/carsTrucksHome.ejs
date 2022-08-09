@@ -10,7 +10,7 @@
 <!-- car post home page -->
 <% carsPosts.forEach(function(carPost){ %>
 <a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
-><span>Brand: $<%= carPost.carBrand %></span>
+><span><b>Price: </b> $<%= carPost.carPrice %></span>
 
 <%}) %>
 

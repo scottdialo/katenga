@@ -138,6 +138,9 @@ app.get("/carsCompose", function (req, res) {
       carYear: req.body.carYear,
       carColor: req.body.carColor,
       carLocation: req.body.carLocation,
+      carPrice: req.body.carPrice,
+      carTel: req.body.carTel,
+      carDescription: req.body.carDescription,
     };
     carsPosts.push(carPost);
 
