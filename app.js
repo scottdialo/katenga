@@ -75,6 +75,7 @@ app.get("/compose", function (req, res) {
     const title = req.body.title;
     const price = req.body.price;
     const tel = req.body.tel;
+    const location = req.body.location;
     const description = req.body.description;
     const listingDate = dayYear;
 
@@ -82,6 +83,7 @@ app.get("/compose", function (req, res) {
       title: req.body.title,
       price: req.body.price,
       tel: req.body.tel,
+      location: req.body.location,
       description: req.body.description,
     };
 
@@ -103,6 +105,7 @@ app.get("/posts/:postName", function (req, res) {
         title: post.title,
         price: post.price,
         tel: post.tel,
+        location: post.location,
         description: post.description,
       });
     }
