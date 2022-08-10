@@ -68,7 +68,9 @@ app.get("/contact", function (req, res) {
 //get and post route for real estate listings
 
 app.get("/realEstateHome", function (req, res) {
-  res.render("realEstateHome");
+  res.render("realEstateHome", {
+    posts: posts,
+  });
 
   app.get("/compose", function (req, res) {
     res.render("compose");

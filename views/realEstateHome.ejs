@@ -6,6 +6,14 @@
   <button class="btn btn-primary" type="submit">Post listing</button>
 </a>
 
-<h1>Today listings:</h1>
+<!-- <h1>Today listings:</h1> -->
 
-<%-include("partials/footer"); -%>
+<% posts.forEach(function(post){ %>
+<a href="/posts/<%=post.title%>"><h3><%=post.title%></h3></a
+><span>Price $<%= post.price %></span>
+
+<!-- car post home page -->
+
+<hr />
+<!-- <p><%=post.description %></p> -->
+<%}) %> <%-include("partials/footer"); -%>
