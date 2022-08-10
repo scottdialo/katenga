@@ -65,9 +65,14 @@ app.get("/contact", function (req, res) {
   res.render("contact", { startingContactContent: contactContent });
 });
 
-app.get("/compose", function (req, res) {
-  res.render("compose");
+//get and post route for real estate listings
 
+app.get("/realEstateHome", function (req, res) {
+  res.render("realEstateHome");
+
+  app.get("/compose", function (req, res) {
+    res.render("compose");
+  });
   //post route
   app.post("/compose", function (req, res) {
     //date next to post title
@@ -151,7 +156,7 @@ app.get("/carsCompose", function (req, res) {
     };
     carsPosts.push(carPost);
 
-    console.log(carsPosts);
+    // console.log(carsPosts);
 
     res.redirect("/carsTrucksHome");
   });
