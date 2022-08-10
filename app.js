@@ -31,6 +31,7 @@ app.use(express.static("public"));
 ///global variables
 const posts = [];
 const carsPosts = [];
+const electronicsPosts = [];
 
 app.get("/", function (req, res) {
   res.render("home", {
@@ -95,7 +96,7 @@ app.get("/realEstateHome", function (req, res) {
       description: req.body.description,
     };
 
-    posts.push(post);
+    posts.unshift(post);
 
     res.redirect("/realEstateHome");
   });
@@ -140,6 +141,7 @@ app.get("/carsCompose", function (req, res) {
     const carYear = req.body.carYear;
     const carColor = req.body.carColor;
     const carLocation = req.body.carLocation;
+    const carImage1 = req.body.carImage1;
     const carDescription = req.body.carDescription;
 
     console.log(carTitle);
@@ -155,9 +157,10 @@ app.get("/carsCompose", function (req, res) {
       carColor: carColor,
       carLocation: carLocation,
       carTel: carTel,
+      carImage1: carImage1,
       carDescription: carDescription,
     };
-    carsPosts.push(carPost);
+    carsPosts.unshift(carPost);
 
     // console.log(carsPosts);
 
@@ -183,6 +186,7 @@ app.get("/carsPosts/:carPostName", function (req, res) {
         carYear: carPost.carYear,
         carColor: carPost.carColor,
         carLocation: carPost.carLocation,
+        // carImage1: carPost.carImage1,
         carDescription: carPost.carDescription,
       });
     }
@@ -199,7 +203,20 @@ app.get("/electronicsCompose", function (req, res) {
   res.render("electronicsCompose");
 
   app.post("/electronicsCompose", function (req, res) {
-    const electronictTitle = req.body.electronictTitle;
+    const electronicTitle = req.body.electronicTitle;
+
+    console.log(electronicTitle);
+
+    //electronics post Object
+    const electronicPost = {
+      electronicTitle: electronicTitle,
+    };
+
+    //adding object into our array
+    electronicsPosts.unshift(electronicPost);
+    console.log(electronicPost);
+
+    // res.redirect("/electronicsHome");
   });
 });
 //server route
