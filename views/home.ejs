@@ -17,4 +17,18 @@
 
 <hr />
 <!-- <p><%=post.description %></p> -->
-<%}) %> <%-include('partials/footer'); -%>
+<%}) %>
+
+<!-- rendering posts from cars listing page -->
+
+<% carsPosts.forEach(function(carPost){ %>
+<hr />
+
+<a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
+><span><b>Price: </b> $<%= carPost.carPrice %></span>
+
+<%}) %>
+
+<hr />
+
+<%-include('partials/footer'); -%>

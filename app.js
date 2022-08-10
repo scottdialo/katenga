@@ -36,6 +36,7 @@ app.get("/", function (req, res) {
   res.render("home", {
     startingContent: homeStartingContent,
     posts: posts,
+    carsPosts: carsPosts,
   });
 });
 const monthName = [
