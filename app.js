@@ -94,7 +94,7 @@ app.get("/realEstateHome", function (req, res) {
 
     posts.push(post);
 
-    res.redirect("/");
+    res.redirect("/realEstateHome");
   });
 });
 
