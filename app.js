@@ -202,8 +202,6 @@ app.get("/electronicsHome", function (req, res) {
   });
 });
 
-/////////////////////////////
-
 app.get("/electronicsCompose", function (req, res) {
   res.render("electronicsCompose");
 
@@ -230,13 +228,35 @@ app.get("/electronicsCompose", function (req, res) {
       electronicTel: electronicTel,
       electronicDescription: electronicDescription,
     };
+
     electronicsPosts.unshift(electronicPost);
 
     res.redirect("/electronicsHome");
   });
 });
 
-/////////////////////////////
+//Create dynamic route for electronics pages
+
+app.get("/electronicsPosts/:electronicPostName", function (req, res) {
+  const requestedElectronicTitle = _.lowerCase(req.params.electronicPostName);
+
+  electronicsPosts.forEach(function (electronicPost) {
+    const storedElectronicTitle = _.lowerCase(electronicPost.electronicTitle);
+
+    if (storedElectronicTitle === requestedElectronicTitle) {
+      res.render("electronicsPosts", {
+        electronicTitle: electronicPost.electronicTitle,
+        electronicPrice: electronicPost.electronicPrice,
+        electronicBrand: electronicPost.electronicBrand,
+        electronicModel: electronicPost.electronicModel,
+        electronicColor: electronicPost.electronicColor,
+        electronicLocation: electronicPost.electronicLocation,
+        electronicTel: electronicPost.electronicTel,
+        electronicDescription: electronicPost.electronicDescription,
+      });
+    }
+  });
+});
 
 //server route
 app.listen(process.env.PORT || 3000, function () {
