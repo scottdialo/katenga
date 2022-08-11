@@ -216,7 +216,7 @@ app.get("/electronicsCompose", function (req, res) {
     electronicsPosts.unshift(electronicPost);
     console.log(electronicPost);
 
-    // res.redirect("/electronicsHome");
+    res.redirect("/electronicsHome");
   });
 });
 //server route
