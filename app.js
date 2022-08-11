@@ -217,8 +217,11 @@ app.get("/electronicsCompose", function (req, res) {
     };
     electronicsPosts.unshift(electronicPost);
 
+<<<<<<< HEAD
     console.log(electronicsPosts);
 
+=======
+>>>>>>> master
     res.redirect("/electronicsHome");
   });
 });
