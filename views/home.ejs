@@ -30,5 +30,15 @@
   <%}) %>
 
   <hr />
+  <!-- rendering posts from electronic listing page -->
+
+  <% electronicsPosts.forEach(function(electronicPost){ %>
+  <a href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
+    ><h3><%=electronicPost.electronicTitle%></h3></a
+  >
+  <span>Price $<%= electronicPost.electronicPrice %></span>
+  <hr />
+
+  <%}) %>
 </div>
 <%-include('partials/footer'); -%>

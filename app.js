@@ -37,6 +37,7 @@ app.get("/", function (req, res) {
     startingContent: homeStartingContent,
     posts: posts,
     carsPosts: carsPosts,
+    electronicsPosts: electronicsPosts,
   });
 });
 const monthName = [
@@ -208,20 +209,29 @@ app.get("/electronicsCompose", function (req, res) {
 
   app.post("/electronicsCompose", function (req, res) {
     const electronicTitle = req.body.electronicTitle;
+    const electronicPrice = req.body.electronicPrice;
+    const electronicBrand = req.body.electronicBrand;
+    const electronicModel = req.body.electronicModel;
+    const electronicColor = req.body.electronicColor;
+    const electronicLocation = req.body.electronicLocation;
+    const electronicTel = req.body.electronicTel;
+    const electronicDescription = req.body.electronicDescription;
 
-    console.log(electronicTitle);
+    //console.log(electronicTitle);
 
     //car post object
     const electronicPost = {
       electronicTitle: electronicTitle,
+      electronicPrice: electronicPrice,
+      electronicBrand: electronicBrand,
+      electronicModel: electronicModel,
+      electronicColor: electronicColor,
+      electronicLocation: electronicLocation,
+      electronicTel: electronicTel,
+      electronicDescription: electronicDescription,
     };
     electronicsPosts.unshift(electronicPost);
 
-<<<<<<< HEAD
-    console.log(electronicsPosts);
-
-=======
->>>>>>> master
     res.redirect("/electronicsHome");
   });
 });
