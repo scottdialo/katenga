@@ -16,6 +16,7 @@
 .navbar-nav li a:hover {
   color: #1abc9c !important;
 }
+
 .today-listing {
   text-align: center;
 }
@@ -74,6 +75,9 @@ input[type="number"] {
   .slogan {
     font-size: 15px;
   }
+  /* .slogan > :hover {
+    text-decoration: none;
+  } */
 
   .container {
     /* background-color: #1abc9c; */
@@ -84,6 +88,7 @@ input[type="number"] {
   .navbar-default .navbar-brand {
     color: white;
     font-size: 35px;
+    /* text-decoration: underline; */
   }
   /* .navbar-brand > p :hover {
     color: #1abc9c !important;
@@ -95,6 +100,7 @@ input[type="number"] {
   .footer {
     position: fixed;
   }
+
   .body-content {
     min-height: 100%;
   }
