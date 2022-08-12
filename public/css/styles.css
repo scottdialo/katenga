@@ -25,6 +25,7 @@
 
 .footer {
   text-align: center;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 60px;
@@ -92,7 +93,7 @@ input[type="number"] {
     background-color: transparent;
   }
   .footer {
-    margin-top: 400px;
+    position: fixed;
   }
   .body-content {
     min-height: 100%;
