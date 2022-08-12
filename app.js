@@ -4,10 +4,32 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
-const multer = require("multer");
-const upload = multer();
 const app = express();
 const _ = require("lodash");
+
+///multer code
+const multer = require("multer");
+const path = require("path");
+const fileStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date() + "--" + file.originalname);
+  },
+});
+const upload = multer({ storage: fileStorageEngine });
+
+// app.post("/electronicsCompose", upload.single("image"), function (req, res) {
+//   console.log(req.file);
+//   res.send("single files upload successful");
+// });
+app.post("/electronicsCompose", upload.array("images", 2), function (req, res) {
+  console.log(req.files);
+  res.send("multiple files uploaded successfully");
+});
+///multer code Ends
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -21,30 +43,6 @@ const contactContent =
   "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 // Image to be stored in upload folder and naming strategies
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public/uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
-//this func to validate & accept only jpeg,jpg and png files
-// const fileFilter = (req, file, cb) => {
-//   if (
-//     file.mimetype === "image/jpg" ||
-//     file.mimetype === "image/jpeg" ||
-//     file.mimetype === "image/png"
-//   ) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//   }
-// };
-// const upload = multer({
-//   storage: storage,
-//   fileFilter: fileFilter,
-// });
 
 // mongoose.connect("mongoose://localhost:27017/postDB");
 
@@ -214,7 +212,6 @@ app.get("/carsPosts/:carPostName", function (req, res) {
         carYear: carPost.carYear,
         carColor: carPost.carColor,
         carLocation: carPost.carLocation,
-        // carImage1: carPost.carImage1,
         carDescription: carPost.carDescription,
       });
     }
@@ -258,28 +255,6 @@ app.get("/electronicsCompose", function (req, res) {
     };
 
     // //image uploader
-    app.post(
-      "/electronicsCompose",
-      upload.single("avatar"),
-      function (req, res, next) {
-        console.log(req.file);
-      }
-    );
-    app.post(
-      "/photos/upload",
-      upload.array("photos", 12),
-      function (req, res, next) {
-        console.log(req.files);
-      }
-    );
-    const cpUpload = upload.fields([
-      { name: "avatar", maxCount: 1 },
-      { name: "gallery", maxCount: 8 },
-    ]);
-    app.post("/cool-profile", cpUpload, function (req, res, next) {
-      const img = req.files["avatar"][0];
-      console.log(img);
-    });
 
     electronicsPosts.unshift(electronicPost);
 
