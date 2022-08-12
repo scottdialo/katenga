@@ -73,14 +73,22 @@ input[type="number"] {
     font-size: 30px;
   }
   .container {
+    /* background-color: #1abc9c; */
     background-color: green;
+
     width: 100%;
   }
   .navbar-default .navbar-brand {
     color: white;
     font-size: 55px;
   }
-
+  /* .navbar-brand > p :hover {
+    color: #1abc9c !important;
+  } */
+  .navbar-default .navbar-brand:hover {
+    color: #fff;
+    background-color: transparent;
+  }
   .footer {
     margin-top: 400px;
   }
