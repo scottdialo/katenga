@@ -6,38 +6,39 @@
   <button class="btn btn-primary" type="submit">Post listing</button>
 </a> -->
 <div class="body-content">
-  <p><%= startingContent %></p>
+  <p class="home-intro-text"><%= startingContent %></p>
+  <div class="home-listing-wrapper">
+    <h1>Today listings:</h1>
 
-  <h1>Today listings:</h1>
+    <%posts.forEach(function(post){ %>
+    <a href="/posts/<%=post.title%>"><h3><%=post.title%></h3></a
+    ><span>Price $<%= post.price %></span>
 
-  <%posts.forEach(function(post){ %>
-  <a href="/posts/<%=post.title%>"><h3><%=post.title%></h3></a
-  ><span>Price $<%= post.price %></span>
+    <!-- car post home page -->
 
-  <!-- car post home page -->
+    <%}) %>
 
-  <%}) %>
+    <!-- rendering posts from cars listing page -->
 
-  <!-- rendering posts from cars listing page -->
+    <% carsPosts.forEach(function(carPost){ %>
+    <hr />
 
-  <% carsPosts.forEach(function(carPost){ %>
-  <hr />
+    <a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
+    ><span><b>Price: </b> $<%= carPost.carPrice %></span>
 
-  <a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
-  ><span><b>Price: </b> $<%= carPost.carPrice %></span>
+    <%}) %>
 
-  <%}) %>
+    <hr />
+    <!-- rendering posts from electronic listing page -->
 
-  <hr />
-  <!-- rendering posts from electronic listing page -->
+    <% electronicsPosts.forEach(function(electronicPost){ %>
+    <a href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
+      ><h3><%=electronicPost.electronicTitle%></h3></a
+    >
+    <span>Price $<%= electronicPost.electronicPrice %></span>
+    <hr />
 
-  <% electronicsPosts.forEach(function(electronicPost){ %>
-  <a href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
-    ><h3><%=electronicPost.electronicTitle%></h3></a
-  >
-  <span>Price $<%= electronicPost.electronicPrice %></span>
-  <hr />
-
-  <%}) %>
+    <%}) %>
+  </div>
 </div>
 <%-include('partials/footer'); -%>
