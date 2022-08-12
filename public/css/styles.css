@@ -16,7 +16,9 @@
 .navbar-nav li a:hover {
   color: #1abc9c !important;
 }
-
+.today-listing {
+  text-align: center;
+}
 .footer-padding {
   padding-bottom: 60px;
 }
@@ -69,8 +71,9 @@ input[type="number"] {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .slogan {
-    font-size: 30px;
+    font-size: 15px;
   }
+
   .container {
     /* background-color: #1abc9c; */
     background-color: green;
@@ -79,7 +82,7 @@ input[type="number"] {
   }
   .navbar-default .navbar-brand {
     color: white;
-    font-size: 55px;
+    font-size: 35px;
   }
   /* .navbar-brand > p :hover {
     color: #1abc9c !important;
@@ -93,6 +96,11 @@ input[type="number"] {
   }
   .body-content {
     min-height: 100%;
+  }
+  .home-intro-text {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
   }
   .navbar-default,
   .navbar-nav > li > a {
