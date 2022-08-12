@@ -4,19 +4,47 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
+const multer = require("multer");
+const upload = multer();
+const app = express();
+const _ = require("lodash");
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+//text starting content on pages
 const homeStartingContent =
   "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. ";
 const aboutContent =
   "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
 const contactContent =
   "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
-const app = express();
-const _ = require("lodash");
 
-app.set("view engine", "ejs");
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// Image to be stored in upload folder and naming strategies
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+//this func to validate & accept only jpeg,jpg and png files
+// const fileFilter = (req, file, cb) => {
+//   if (
+//     file.mimetype === "image/jpg" ||
+//     file.mimetype === "image/jpeg" ||
+//     file.mimetype === "image/png"
+//   ) {
+//     cb(null, true);
+//   } else {
+//     cb(null, false);
+//   }
+// };
+// const upload = multer({
+//   storage: storage,
+//   fileFilter: fileFilter,
+// });
 
 // mongoose.connect("mongoose://localhost:27017/postDB");
 
@@ -228,6 +256,30 @@ app.get("/electronicsCompose", function (req, res) {
       electronicTel: electronicTel,
       electronicDescription: electronicDescription,
     };
+
+    // //image uploader
+    app.post(
+      "/electronicsCompose",
+      upload.single("avatar"),
+      function (req, res, next) {
+        console.log(req.file);
+      }
+    );
+    app.post(
+      "/photos/upload",
+      upload.array("photos", 12),
+      function (req, res, next) {
+        console.log(req.files);
+      }
+    );
+    const cpUpload = upload.fields([
+      { name: "avatar", maxCount: 1 },
+      { name: "gallery", maxCount: 8 },
+    ]);
+    app.post("/cool-profile", cpUpload, function (req, res, next) {
+      const img = req.files["avatar"][0];
+      console.log(img);
+    });
 
     electronicsPosts.unshift(electronicPost);
 

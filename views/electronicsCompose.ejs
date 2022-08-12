@@ -2,7 +2,7 @@
 
 <h1 class="post-header">List a Phone | Computer | Tablet</h1>
 
-<form action="/electronicsCompose" method="post">
+<form action="/electronicsCompose" method="post" enctype="multipart/form-data">
   <div id="form-group">
     <label for="title">Posting Title</label>
     <input class="form-control" type="text" name="electronicTitle" required />
@@ -18,6 +18,10 @@
     <input class="form-control" type="text" name="electronicPrice" />
     <label for="tel">Phone Number</label>
     <input class="form-control" type="number" name="electronicTel" />
+
+    <label for="img">Upload photo</label>
+    <input type="file" name="uploaded_file" />
+
     <label for="">Description</label>
     <textarea
       class="form-control"
