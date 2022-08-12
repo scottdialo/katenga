@@ -7,7 +7,7 @@ const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
 
-///multer code
+///multer code for storing and handling upload images
 const multer = require("multer");
 const path = require("path");
 const fileStorageEngine = multer.diskStorage({
@@ -20,14 +20,6 @@ const fileStorageEngine = multer.diskStorage({
 });
 const upload = multer({ storage: fileStorageEngine });
 
-// app.post("/electronicsCompose", upload.single("image"), function (req, res) {
-//   console.log(req.file);
-//   res.send("single files upload successful");
-// });
-app.post("/electronicsCompose", upload.array("images", 2), function (req, res) {
-  console.log(req.files);
-  res.send("multiple files uploaded successfully");
-});
 ///multer code Ends
 
 app.set("view engine", "ejs");
@@ -230,36 +222,41 @@ app.get("/electronicsHome", function (req, res) {
 app.get("/electronicsCompose", function (req, res) {
   res.render("electronicsCompose");
 
-  app.post("/electronicsCompose", function (req, res) {
-    const electronicTitle = req.body.electronicTitle;
-    const electronicPrice = req.body.electronicPrice;
-    const electronicBrand = req.body.electronicBrand;
-    const electronicModel = req.body.electronicModel;
-    const electronicColor = req.body.electronicColor;
-    const electronicLocation = req.body.electronicLocation;
-    const electronicTel = req.body.electronicTel;
-    const electronicDescription = req.body.electronicDescription;
+  app.post(
+    "/electronicsCompose",
+    upload.array("images", 5),
+    function (req, res) {
+      console.log(req.files);
+      const electronicTitle = req.body.electronicTitle;
+      const electronicPrice = req.body.electronicPrice;
+      const electronicBrand = req.body.electronicBrand;
+      const electronicModel = req.body.electronicModel;
+      const electronicColor = req.body.electronicColor;
+      const electronicLocation = req.body.electronicLocation;
+      const electronicTel = req.body.electronicTel;
+      const electronicDescription = req.body.electronicDescription;
 
-    //console.log(electronicTitle);
+      //console.log(electronicTitle);
 
-    //car post object
-    const electronicPost = {
-      electronicTitle: electronicTitle,
-      electronicPrice: electronicPrice,
-      electronicBrand: electronicBrand,
-      electronicModel: electronicModel,
-      electronicColor: electronicColor,
-      electronicLocation: electronicLocation,
-      electronicTel: electronicTel,
-      electronicDescription: electronicDescription,
-    };
+      //car post object
+      const electronicPost = {
+        electronicTitle: electronicTitle,
+        electronicPrice: electronicPrice,
+        electronicBrand: electronicBrand,
+        electronicModel: electronicModel,
+        electronicColor: electronicColor,
+        electronicLocation: electronicLocation,
+        electronicTel: electronicTel,
+        electronicDescription: electronicDescription,
+      };
 
-    // //image uploader
+      // //image uploader
 
-    electronicsPosts.unshift(electronicPost);
+      electronicsPosts.unshift(electronicPost);
 
-    res.redirect("/electronicsHome");
-  });
+      res.redirect("/electronicsHome");
+    }
+  );
 });
 
 //Create dynamic route for electronics pages
