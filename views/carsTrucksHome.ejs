@@ -12,8 +12,8 @@
 <% carsPosts.forEach(function(carPost){ %>
 <hr />
 
-<a class="title-alink" href="/carsPosts/<%=carPost.carTitle%>"
-  ><h3><%=carPost.carTitle%></h3></a
+<a href="/carsPosts/<%=carPost.carTitle%>"
+  ><h3 class="title-alink"><%=carPost.carTitle%></h3></a
 ><span class="title-alink"><b>Price: </b> $<%= carPost.carPrice %></span>
 
 <%}) %>

@@ -6,8 +6,9 @@
     <h1 class="today-listing">Today listings:</h1>
 
     <%posts.forEach(function(post){ %>
-    <a href="/posts/<%=post.title%>"> <h3><%=post.title%></h3></a
-    ><span>Price $<%= post.price %></span>
+    <a href="/posts/<%=post.title%>">
+      <h3 class="title-alink"><%=post.title%></h3></a
+    ><span class="title-alink">Price $<%= post.price %></span>
 
     <!-- car post home page -->
 
@@ -18,8 +19,9 @@
     <% carsPosts.forEach(function(carPost){ %>
     <hr />
 
-    <a href="/carsPosts/<%=carPost.carTitle%>"><h3><%=carPost.carTitle%></h3></a
-    ><span><b>Price: </b> $<%= carPost.carPrice %></span>
+    <a href="/carsPosts/<%=carPost.carTitle%>"
+      ><h3 class="title-alink"><%=carPost.carTitle%></h3></a
+    ><span class="title-alink"><b>Price: </b> $<%= carPost.carPrice %></span>
 
     <%}) %>
 
@@ -32,7 +34,9 @@
       class="title-alink"
       href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
     >
-      <h3 class="link-title"><%=electronicPost.electronicTitle%></h3></a
+      <h3 class="link-title title-alink">
+        <%=electronicPost.electronicTitle%>
+      </h3></a
     >
     <p class="title-alink">
       <b>Price:</b> $<%= electronicPost.electronicPrice %>
