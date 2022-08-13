@@ -9,9 +9,11 @@
 
 <% electronicsPosts.forEach(function(electronicPost){ %>
 <a href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
-  ><h3><%=electronicPost.electronicTitle%></h3></a
+  ><h3 class="title-alink"><%=electronicPost.electronicTitle%></h3></a
 >
-<span><b>Price: </b> $<%= electronicPost.electronicPrice %></span>
+<span class="title-alink"
+  ><b>Price: </b> $<%= electronicPost.electronicPrice %></span
+>
 <hr />
 
 <%}) %> <%-include("partials/footer"); -%>

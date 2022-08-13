@@ -1,17 +1,12 @@
 <%-include("partials/header"); -%>
 
-<!-- <h1 class="post-header">Buy | Sell | Rent</h1>
-<center><h4>Real Estate in Guinea</h4></center>
-<a href="/compose">
-  <button class="btn btn-primary" type="submit">Post listing</button>
-</a> -->
 <div class="body-content">
   <p class="home-intro-text"><%= startingContent %></p>
   <div class="home-listing-wrapper">
     <h1 class="today-listing">Today listings:</h1>
 
     <%posts.forEach(function(post){ %>
-    <a href="/posts/<%=post.title%>"><h3><%=post.title%></h3></a
+    <a href="/posts/<%=post.title%>"> <h3><%=post.title%></h3></a
     ><span>Price $<%= post.price %></span>
 
     <!-- car post home page -->
@@ -32,10 +27,16 @@
     <!-- rendering posts from electronic listing page -->
 
     <% electronicsPosts.forEach(function(electronicPost){ %>
-    <a href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
-      ><h3><%=electronicPost.electronicTitle%></h3></a
+    <!-- <i><%=electronicPost.electronicDate%></i> -->
+    <a
+      class="title-alink"
+      href="/electronicsPosts/<%=electronicPost.electronicTitle%>"
     >
-    <span>Price $<%= electronicPost.electronicPrice %></span>
+      <h3 class="link-title"><%=electronicPost.electronicTitle%></h3></a
+    >
+    <p class="title-alink">
+      <b>Price:</b> $<%= electronicPost.electronicPrice %>
+    </p>
     <hr />
 
     <%}) %>
