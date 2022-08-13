@@ -15,9 +15,8 @@
     <%}) %>
 
     <!-- rendering posts from cars listing page -->
-
-    <% carsPosts.forEach(function(carPost){ %>
     <hr />
+    <% carsPosts.forEach(function(carPost){ %>
 
     <a href="/carsPosts/<%=carPost.carTitle%>"
       ><h3 class="title-alink"><%=carPost.carTitle%></h3></a
@@ -41,6 +40,7 @@
     <p class="title-alink">
       <b>Price:</b> $<%= electronicPost.electronicPrice %>
     </p>
+
     <hr />
 
     <%}) %>
