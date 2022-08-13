@@ -1,13 +1,15 @@
 <%-include("partials/header"); -%>
-<h3><%= carTitle %></h3>
-<p><%= carDescription %></p>
-<p><b>Price:</b> $<%=carPrice%></p>
-<p><b>Phone:</b> <a href=""><%=carTel%></a></p>
-<p><b>Location:</b> <%=carLocation%></p>
-<p><b>Brand:</b> <%=carBrand%></p>
-<p><b>Year: </b><%=carYear%></p>
-<p><b>Model:</b> <%=carModel%></p>
-<p><b>Mileage:</b> <%=carMileage%></p>
-<p><b>Color:</b> <%=carColor%></p>
+<div class="display-content-wrapper">
+  <h3><%= carTitle %></h3>
+  <p><%= carDescription %></p>
+  <p><b>Price:</b> $<%=carPrice%></p>
+  <p><b>Phone:</b> <a href=""><%=carTel%></a></p>
+  <p><b>Location:</b> <%=carLocation%></p>
+  <p><b>Brand:</b> <%=carBrand%></p>
+  <p><b>Year: </b><%=carYear%></p>
+  <p><b>Model:</b> <%=carModel%></p>
+  <p><b>Mileage:</b> <%=carMileage%></p>
+  <p><b>Color:</b> <%=carColor%></p>
 
-<%-include('partials/footer'); -%>
+  <%-include('partials/footer'); -%>
+</div>
