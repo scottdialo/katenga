@@ -38,12 +38,12 @@
 .post-btn {
   background-color: green;
 }
-.btn {
-  margin-bottom: 15px;
+.btn:hover {
+  background-color: green;
 }
 
 .footer-padding {
-  padding-bottom: 60px;
+  padding-bottom: 75px;
 }
 
 .footer {
