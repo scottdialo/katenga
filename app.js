@@ -226,7 +226,8 @@ app.get("/electronicsCompose", function (req, res) {
     "/electronicsCompose",
     upload.array("images", 5),
     function (req, res) {
-      console.log(req.files);
+      console.log(req.files[0].originalname);
+      const images = req.files[0].originalname;
       const electronicTitle = req.body.electronicTitle;
       const electronicPrice = req.body.electronicPrice;
       const electronicBrand = req.body.electronicBrand;
@@ -234,6 +235,7 @@ app.get("/electronicsCompose", function (req, res) {
       const electronicColor = req.body.electronicColor;
       const electronicLocation = req.body.electronicLocation;
       const electronicTel = req.body.electronicTel;
+      const electronicDate = req.body.electronicDate;
       const electronicDescription = req.body.electronicDescription;
 
       //console.log(electronicTitle);
@@ -247,7 +249,9 @@ app.get("/electronicsCompose", function (req, res) {
         electronicColor: electronicColor,
         electronicLocation: electronicLocation,
         electronicTel: electronicTel,
+        electronicDate: electronicDate,
         electronicDescription: electronicDescription,
+        images: images,
       };
 
       // //image uploader
@@ -277,6 +281,7 @@ app.get("/electronicsPosts/:electronicPostName", function (req, res) {
         electronicLocation: electronicPost.electronicLocation,
         electronicTel: electronicPost.electronicTel,
         electronicDescription: electronicPost.electronicDescription,
+        images: electronicPost.images,
       });
     }
   });

@@ -5,6 +5,7 @@
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
 .navbar {
   padding-bottom: 15px;
   border: 0;
@@ -20,6 +21,20 @@
 .today-listing {
   text-align: center;
 }
+.link-title {
+  display: contents;
+}
+.title-alink {
+  margin-left: 15px;
+}
+
+/* styling for content once title is clicked */
+.display-content-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  padding: 12px 0px 12px 20px;
+}
+
 .footer-padding {
   padding-bottom: 60px;
 }
