@@ -35,6 +35,13 @@
   padding: 12px 0px 12px 20px;
 }
 
+.post-btn {
+  background-color: green;
+}
+.btn {
+  margin-bottom: 15px;
+}
+
 .footer-padding {
   padding-bottom: 60px;
 }
