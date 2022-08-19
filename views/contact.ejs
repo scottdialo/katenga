@@ -1,4 +1,36 @@
 <%-include("partials/header"); -%>
-<h1>Say Hello to Us!</h1>
-<p><%= startingContactContent %></p>
+<h1 class="c-header">Say Hello to Us!</h1>
+<p class="c-content"><%= startingContactContent %></p>
+
+<h1></h1>
+<form class="contact-form" action="/contact" method="post">
+  <div id="form-group">
+    <label for="name">Name: </label>
+    <input
+      class="c-input"
+      type="text"
+      placeholder="name"
+      name="name"
+      required
+    />
+    <label for="email">Email:</label>
+    <input
+      class="c-input"
+      type="email"
+      name="email"
+      placeholder="email"
+      required
+    />
+    <label for="message">Message:</label>
+    <textarea
+      class="contact-msg"
+      name="message"
+      id=""
+      cols="33"
+      rows="10"
+    ></textarea>
+  </div>
+  <button class="submit-btn" type="submit">Send</button>
+</form>
+
 <%-include("partials/footer"); -%>

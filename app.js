@@ -28,12 +28,11 @@ app.use(express.static("public"));
 
 //text starting content on pages
 const homeStartingContent =
-  "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. ";
+  "We built this website from our heart and soul, we wanted to make something that millions could use and benefit from. With many happy customers and small business selling more than ever and gaining new customers everyday. We will continue to provide more value and improve daily. That is our commitment to you!";
 const aboutContent =
-  "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
+  "It all started with a simple idea, which was to connect buyer and seller for a smooth transaction, now we have made an amazing products that are serving millions and growing. The team have grown from 2 to 9 in a short span. We love what we are building here and we are going to do have some product at the end.";
 const contactContent =
-  "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
-
+  "At Katenga our customers are our life blood and would love to hear from you, even if it's to just say hello! ";
 // Image to be stored in upload folder and naming strategies
 
 // mongoose.connect("mongoose://localhost:27017/postDB");
@@ -81,9 +80,19 @@ app.get("/about", function (req, res) {
   res.render("about", { aboutStartingContent: aboutContent });
 });
 
+//get and post route for our contact form
 app.get("/contact", function (req, res) {
   res.render("contact", { startingContactContent: contactContent });
 });
+app.post("/contact", function (req, res) {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  console.log(message);
+});
+
+//use emailJS to receive emails. // api integration
 
 //get and post route for real estate listings
 

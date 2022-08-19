@@ -83,6 +83,36 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 
+/* styling for our contact us form */
+.contact-form {
+  width: 20%;
+  margin: 0 auto;
+}
+.c-input {
+  display: block;
+  margin: 10px 0px;
+  font-size: 16px;
+  height: 30px;
+  width: 100%;
+}
+.contact-mgs {
+  margin: 10px 0;
+}
+.submit-btn {
+  margin-top: 10px;
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10pz;
+  border-radius: 5px;
+  background-color: green;
+  color: #fff;
+}
+.c-header,
+.c-content {
+  text-align: center;
+}
+
 /* media query for responsiveness */
 /* Extra small devices (phones, 600px and down) */
 
