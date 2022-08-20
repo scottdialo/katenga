@@ -84,8 +84,8 @@ input[type="number"] {
 }
 
 /* styling for our contact us form */
-.contact-form {
-  width: 20%;
+.contact-us {
+  width: 40%;
   margin: 0 auto;
 }
 .c-input {
@@ -98,20 +98,43 @@ input[type="number"] {
 .contact-mgs {
   margin: 10px 0;
 }
-.submit-btn {
-  margin-top: 10px;
-  width: 90px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 10pz;
-  border-radius: 5px;
-  background-color: green;
-  color: #fff;
-}
+
 .c-header,
 .c-content {
   text-align: center;
 }
+
+/* test */
+
+form {
+  margin-top: 20px;
+}
+input {
+  width: 50%;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+textarea {
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+button {
+  border: none;
+  padding: 15px;
+  background-color: green;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  width: 90px;
+}
+
+/* test */
 
 /* media query for responsiveness */
 /* Extra small devices (phones, 600px and down) */
