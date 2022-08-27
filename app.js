@@ -119,14 +119,6 @@ app.get("/realEstateHome", function (req, res) {
     posts: posts,
   });
 
-  //thank you page
-
-  app.get("/success", function (req, res) {
-    res.render("success");
-  });
-
-  /////
-
   app.get("/compose", function (req, res) {
     res.render("compose");
   });
