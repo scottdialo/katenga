@@ -1,28 +1,48 @@
-<%-include("partials/header"); -%>
+<p><%-include("partials/header"); -%></p>
 <h1 class="c-header">Say Hello to Us!</h1>
 <p class="c-content"><%= startingContactContent %></p>
 
 <h1></h1>
-<form class="contact-us" action="/contact" method="post">
+<form
+  action="https://formsubmit.co/91a648979bd7c79f68a38baba2337c4d"
+  method="POST"
+  id="contact-form"
+  class="contact-us"
+  action="/contact"
+  method="post"
+>
+  <!-- Honeypot -->
+  <input type="text" name="_honey" style="display: none" />
+  <!-- Disable captcha -->
+  <input type="hidden" name="_captcha" value="false" />
+
+  <input
+    type="hidden"
+    name="_next"
+    value="https://katenga.herokuapp.com/success.html"
+  />
   <div id="form-group">
-    <!-- <label for="name">Name: </label> -->
     <input
+      id="from_name"
+      name="user_name"
       class="c-input"
       type="text"
       placeholder="name"
       name="name"
       required
     />
-    <!-- <label for="email">Email:</label> -->
     <input
+      id="from_email"
+      name="user_email"
       class="c-input"
       type="email"
       name="email"
       placeholder="email"
       required
     />
-    <!-- <label for="message">Message:</label> -->
     <textarea
+      id="message"
+      name="message"
       class="contact-msg"
       name="message"
       placeholder="Type your message..."
@@ -32,6 +52,12 @@
     ></textarea>
   </div>
   <button class="submit-btn" type="submit">Send</button>
+  <!-- redirect thank you page -->
+  <!-- <input
+    type="hidden"
+    name="_next"
+    value="https://katenga.herokuapp.com/contact"
+  /> -->
 </form>
 
 <%-include("partials/footer"); -%>

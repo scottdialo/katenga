@@ -6,6 +6,24 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
+const emailjs = require("@emailjs/browser");
+
+//code to send email from our contact us page with emailJS
+// emailjs
+//   .sendForm(
+//     "default_service",
+//     "service_y3sdx0f",
+//     "template_15pbi09",
+//     "#contact-form"
+//   )
+//   .then(
+//     function (response) {
+//       console.log("Email sent!", response.status, response.text);
+//     },
+//     function (err) {
+//       console.log("FAILED, TRY AGAIN...", err);
+//     }
+//   );
 
 ///multer code for storing and handling upload images
 const multer = require("multer");
@@ -32,7 +50,7 @@ const homeStartingContent =
 const aboutContent =
   "It all started with a simple idea, which was to connect buyer and seller for a smooth transaction, now we have made an amazing products that are serving millions and growing. The team have grown from 2 to 9 in a short span. We love what we are building here and we are going to do have some product at the end.";
 const contactContent =
-  "At Katenga our customers are our life blood and would love to hear from you, even if it's to just say hello! ";
+  "At Katenga our customers are our life blood and we would be delighted to hear from you, even if it's to just say hello! ";
 // Image to be stored in upload folder and naming strategies
 
 // mongoose.connect("mongoose://localhost:27017/postDB");
