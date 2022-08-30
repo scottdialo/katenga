@@ -238,8 +238,8 @@ app.get("/electronicsCompose", function (req, res) {
     "/electronicsCompose",
     upload.array("images", 5),
     function (req, res) {
-      console.log(req.files[0].originalname);
-      const images = req.files[0].originalname;
+      // console.log(req.files[0].originalname);
+      // const images = req.files[0].originalname;
       const electronicTitle = req.body.electronicTitle;
       const electronicPrice = req.body.electronicPrice;
       const electronicBrand = req.body.electronicBrand;
@@ -263,7 +263,7 @@ app.get("/electronicsCompose", function (req, res) {
         electronicTel: electronicTel,
         electronicDate: electronicDate,
         electronicDescription: electronicDescription,
-        images: images,
+        // images: images,
       };
 
       // //image uploader
@@ -293,7 +293,7 @@ app.get("/electronicsPosts/:electronicPostName", function (req, res) {
         electronicLocation: electronicPost.electronicLocation,
         electronicTel: electronicPost.electronicTel,
         electronicDescription: electronicPost.electronicDescription,
-        images: electronicPost.images,
+        // images: electronicPost.images,
       });
     }
   });
