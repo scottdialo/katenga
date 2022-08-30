@@ -2,28 +2,11 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
-const emailjs = require("@emailjs/browser");
-
-//code to send email from our contact us page with emailJS
-// emailjs
-//   .sendForm(
-//     "default_service",
-//     "service_y3sdx0f",
-//     "template_15pbi09",
-//     "#contact-form"
-//   )
-//   .then(
-//     function (response) {
-//       console.log("Email sent!", response.status, response.text);
-//     },
-//     function (err) {
-//       console.log("FAILED, TRY AGAIN...", err);
-//     }
-//   );
 
 ///multer code for storing and handling upload images
 const multer = require("multer");
@@ -61,6 +44,8 @@ const contactContent =
 //   title: String,
 // };
 // const Post = mongoose.model("Post", postsSchema);
+
+// MongoDB connection ends here
 
 ///global variables
 const posts = [];
