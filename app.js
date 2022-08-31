@@ -2,8 +2,9 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
+const RealEstatePosts = require("./RealEstateDb");
 const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
@@ -11,6 +12,7 @@ const _ = require("lodash");
 ///multer code for storing and handling upload images
 const multer = require("multer");
 const path = require("path");
+const RealEstateDb = require("./RealEstateDb");
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/uploads");
@@ -26,6 +28,34 @@ const upload = multer({ storage: fileStorageEngine });
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+//Database setup //////////
+// mongoose.connect(
+//   "mongodb://localhost/realEstate",
+//   function () {
+//     console.log("DB connected...");
+//   },
+//   function (error) {
+//     console.log(error.message);
+//   }
+// );
+
+// // run();
+
+// async function run() {
+//   const realEstatePost = new RealEstateDb({
+//     title: "land for sale",
+//     location: "Kipe",
+//     price: 120000,
+//     tel: 60239834,
+//     description:
+//       "Un terrain bien place a vendre dans le quartier Kipe, tous les docs sont present",
+//   });
+//   await realEstatePost.save();
+//   console.log(realEstatePost);
+// }
+
+//Database setup ends here //////////
 
 //text starting content on pages
 const homeStartingContent =
@@ -129,6 +159,33 @@ app.get("/realEstateHome", function (req, res) {
     posts.unshift(post);
 
     res.redirect("/realEstateHome");
+
+    //Database setup //////////
+    mongoose.connect(
+      "mongodb://localhost/realEstate",
+      function () {
+        console.log("DB connected...");
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    );
+
+    run();
+
+    async function run() {
+      const realEstatePost = new RealEstateDb({
+        title: req.body.title,
+        price: req.body.price,
+        tel: req.body.tel,
+        location: req.body.location,
+        description: req.body.description,
+      });
+      await realEstatePost.save();
+      console.log(realEstatePost);
+    }
+
+    //Database setup ends here //////////
   });
 });
 
