@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-// const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const RealEstatePosts = require("./RealEstateDb");
 const ejs = require("ejs");
@@ -67,15 +67,6 @@ const contactContent =
 // Image to be stored in upload folder and naming strategies
 
 // mongoose.connect("mongoose://localhost:27017/postDB");
-
-//mongoose setup
-
-// const postsSchema = {
-//   title: String,
-// };
-// const Post = mongoose.model("Post", postsSchema);
-
-// MongoDB connection ends here
 
 ///global variables
 const posts = [];
@@ -160,9 +151,13 @@ app.get("/realEstateHome", function (req, res) {
 
     res.redirect("/realEstateHome");
 
+    ///////////////////////////////////kyle/////////////////////////
+
     //Database setup //////////
+    //mongodb+srv://katenga:<password>@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority
+    //"mongodb://localhost/realEstate"
     mongoose.connect(
-      "mongodb://localhost/realEstate",
+      "mongodb+srv://katenga:Univa2011@@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority",
       function () {
         console.log("DB connected...");
       },
@@ -171,7 +166,7 @@ app.get("/realEstateHome", function (req, res) {
       }
     );
 
-    run();
+    //run();
 
     async function run() {
       const realEstatePost = new RealEstateDb({
@@ -186,6 +181,68 @@ app.get("/realEstateHome", function (req, res) {
     }
 
     //Database setup ends here //////////
+    ////////////////////////////////kyle///////////////////////////
+
+    //mongoose setup
+    async function main() {
+      const url =
+        "mongodb+srv://katenga:Univa2011@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority";
+
+      const client = new MongoClient(url);
+
+      try {
+        await client.connect();
+
+        await createListing(client, {
+          // name: "Lovely loft",
+          // summary: "charming cabin in lake tahoe",
+          // bedrooms: 1,
+          // bathroom: 2,
+          title: req.body.title,
+          price: req.body.price,
+          tel: req.body.tel,
+          location: req.body.location,
+          description: req.body.description,
+        });
+      } catch (e) {
+        console.error(e);
+      } finally {
+        await client.close();
+      }
+    }
+    main().catch(console.error);
+
+    // //create multip llistings
+    // async function createMultipleListings(client, newListings) {
+    //   const result = await client
+    //     .db("sample_airbnb")
+    //     .collection("listingsAndReviews")
+    //     .insertMany(newListings);
+
+    //   console.log(`${result.insertedCount} new listings creted with the id`);
+    //   console.log(result.insertedIds);
+    // }
+
+    //creating a post / listing
+    async function createListing(client, newListing) {
+      const result = await client
+        .db("electronicsDB")
+        .collection("electronicsPosts")
+        .insertOne(newListing);
+
+      console.log(
+        `New listing created with the following id: ${result.insertedId}`
+      );
+    }
+    async function listDatabases(client) {
+      const databasesList = await client.db().admin().listDatabases();
+      console.log("Databases:");
+      databasesList.databases.forEach((db) => {
+        console.log(`- ${db.name}`);
+      });
+    }
+
+    // MongoDB connection ends here
   });
 });
 
