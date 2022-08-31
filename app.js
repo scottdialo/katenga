@@ -151,39 +151,7 @@ app.get("/realEstateHome", function (req, res) {
 
     res.redirect("/realEstateHome");
 
-    ///////////////////////////////////kyle/////////////////////////
-
-    //Database setup //////////
-    //mongodb+srv://katenga:<password>@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority
-    //"mongodb://localhost/realEstate"
-    mongoose.connect(
-      "mongodb+srv://katenga:Univa2011@@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority",
-      function () {
-        console.log("DB connected...");
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    );
-
-    //run();
-
-    async function run() {
-      const realEstatePost = new RealEstateDb({
-        title: req.body.title,
-        price: req.body.price,
-        tel: req.body.tel,
-        location: req.body.location,
-        description: req.body.description,
-      });
-      await realEstatePost.save();
-      console.log(realEstatePost);
-    }
-
-    //Database setup ends here //////////
-    ////////////////////////////////kyle///////////////////////////
-
-    //mongoose setup
+    // working mongoDB  setup start here
     async function main() {
       const url =
         "mongodb+srv://katenga:Univa2011@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority";
@@ -194,15 +162,7 @@ app.get("/realEstateHome", function (req, res) {
         await client.connect();
 
         await createListing(client, {
-          // name: "Lovely loft",
-          // summary: "charming cabin in lake tahoe",
-          // bedrooms: 1,
-          // bathroom: 2,
-          title: req.body.title,
-          price: req.body.price,
-          tel: req.body.tel,
-          location: req.body.location,
-          description: req.body.description,
+          post,
         });
       } catch (e) {
         console.error(e);
@@ -212,18 +172,7 @@ app.get("/realEstateHome", function (req, res) {
     }
     main().catch(console.error);
 
-    // //create multip llistings
-    // async function createMultipleListings(client, newListings) {
-    //   const result = await client
-    //     .db("sample_airbnb")
-    //     .collection("listingsAndReviews")
-    //     .insertMany(newListings);
-
-    //   console.log(`${result.insertedCount} new listings creted with the id`);
-    //   console.log(result.insertedIds);
-    // }
-
-    //creating a post / listing
+    //creating a electronic post / listing
     async function createListing(client, newListing) {
       const result = await client
         .db("electronicsDB")
