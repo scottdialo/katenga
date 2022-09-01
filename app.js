@@ -176,8 +176,8 @@ app.get("/realEstateHome", function (req, res) {
     //creating a electronic post / listing
     async function createListing(client, newListing) {
       const result = await client
-        .db("electronicsDB")
-        .collection("electronicsPosts")
+        .db("realEstateDb")
+        .collection("realEstatePosts")
         .insertOne(newListing);
 
       console.log(
