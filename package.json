@@ -4,8 +4,7 @@
   "description": "A web app for buying and selling real estate assets.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Scott Dialo",
   "license": "ISC",
