@@ -191,7 +191,7 @@ app.get("/realEstateHome", function (req, res) {
       });
     }
 
-    // MongoDB connection ends here
+    // MongoDB connection ends heree
   });
 });
 
