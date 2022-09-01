@@ -9,7 +9,7 @@ const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
 
-///multer code for storing and handling upload images
+///multer code for storing and handling upload image
 const multer = require("multer");
 const path = require("path");
 const RealEstateDb = require("./RealEstateDb");
