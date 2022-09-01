@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
-const RealEstatePosts = require("./RealEstateDb");
+// const RealEstatePosts = require("./RealEstateDb");
 const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
@@ -12,7 +12,7 @@ const _ = require("lodash");
 ///multer code for storing and handling upload images
 const multer = require("multer");
 const path = require("path");
-const RealEstateDb = require("./RealEstateDb");
+// const RealEstateDb = require("./RealEstateDb");
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/uploads");
@@ -164,7 +164,7 @@ app.get("/realEstateHome", function (req, res) {
         await createListing(client, {
           post,
         });
-        await listDatabases(client); //this list our DB
+        // await listDatabases(client); //this list our DB
       } catch (e) {
         console.error(e);
       } finally {
@@ -176,23 +176,23 @@ app.get("/realEstateHome", function (req, res) {
     //creating a electronic post / listing
     async function createListing(client, newListing) {
       const result = await client
-        .db("electronicsDB")
-        .collection("electronicsPosts")
+        .db("realEstateDb")
+        .collection("realEstatePosts")
         .insertOne(newListing);
 
       console.log(
-        `New listing created with the following id: ${result.insertedId}`
+        `New Real estate listing created with the id: ${result.insertedId}`
       );
     }
 
     //list db in our mongoDB clusters
-    async function listDatabases(client) {
-      const databasesList = await client.db().admin().listDatabases();
-      console.log("Databases:");
-      databasesList.databases.forEach((db) => {
-        console.log(`- ${db.name}`);
-      });
-    }
+    // async function listDatabases(client) {
+    //   const databasesList = await client.db().admin().listDatabases();
+    //   console.log("Databases:");
+    //   databasesList.databases.forEach((db) => {
+    //     console.log(`- ${db.name}`);
+    //   });
+    // }
 
     // MongoDB connection ends here
   });
@@ -240,8 +240,6 @@ app.get("/carsCompose", function (req, res) {
     const carImage1 = req.body.carImage1;
     const carDescription = req.body.carDescription;
 
-    // console.log(carTitle);
-
     //car post object
     const carPost = {
       carTitle: carTitle,
@@ -275,7 +273,7 @@ app.get("/carsCompose", function (req, res) {
         await createListing(client, {
           carPost,
         });
-        await listDatabases(client); //this list our DB
+        // await listDatabases(client); //this list our DB
       } catch (e) {
         console.error(e);
       } finally {
@@ -284,16 +282,14 @@ app.get("/carsCompose", function (req, res) {
     }
     main().catch(console.error);
 
-    //creating a electronic post / listing
+    //creating a cars post / listing
     async function createListing(client, newListing) {
       const result = await client
         .db("carsDB")
         .collection("carsPosts")
         .insertOne(newListing);
 
-      console.log(
-        `New listing created with the following id: ${result.insertedId}`
-      );
+      console.log(`New car listing created with id: ${result.insertedId}`);
     }
 
     //list db in our mongoDB clusters
