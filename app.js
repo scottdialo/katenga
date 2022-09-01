@@ -378,6 +378,41 @@ app.get("/electronicsCompose", function (req, res) {
       electronicsPosts.unshift(electronicPost);
 
       res.redirect("/electronicsHome");
+
+      // working mongoDB  electronics setup start here
+      async function main() {
+        const url =
+          "mongodb+srv://katenga:Univa2011@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority";
+
+        const client = new MongoClient(url);
+
+        try {
+          await client.connect();
+
+          await createListing(client, {
+            electronicPost,
+          });
+        } catch (e) {
+          console.error(e);
+        } finally {
+          await client.close();
+        }
+      }
+      main().catch(console.error);
+
+      //creating a electronics post / listing
+      async function createListing(client, newListing) {
+        const result = await client
+          .db("electronicsDB")
+          .collection("electronicsPosts")
+          .insertOne(newListing);
+
+        console.log(
+          `New electronic listing created with id: ${result.insertedId}`
+        );
+      }
+
+      // MongoDB electronics connection ends here
     }
   );
 });
