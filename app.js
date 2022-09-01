@@ -164,6 +164,7 @@ app.get("/realEstateHome", function (req, res) {
         await createListing(client, {
           post,
         });
+        await listDatabases(client); //this list our DB
       } catch (e) {
         console.error(e);
       } finally {
@@ -183,6 +184,8 @@ app.get("/realEstateHome", function (req, res) {
         `New listing created with the following id: ${result.insertedId}`
       );
     }
+
+    //list db in our mongoDB clusters
     async function listDatabases(client) {
       const databasesList = await client.db().admin().listDatabases();
       console.log("Databases:");
@@ -237,7 +240,7 @@ app.get("/carsCompose", function (req, res) {
     const carImage1 = req.body.carImage1;
     const carDescription = req.body.carDescription;
 
-    console.log(carTitle);
+    // console.log(carTitle);
 
     //car post object
     const carPost = {
@@ -258,6 +261,51 @@ app.get("/carsCompose", function (req, res) {
     // console.log(carsPosts);
 
     res.redirect("/carsTrucksHome");
+
+    // working mongoDB  cars setup start here
+    async function main() {
+      const url =
+        "mongodb+srv://katenga:Univa2011@cluster0.mxnblja.mongodb.net/?retryWrites=true&w=majority";
+
+      const client = new MongoClient(url);
+
+      try {
+        await client.connect();
+
+        await createListing(client, {
+          carPost,
+        });
+        await listDatabases(client); //this list our DB
+      } catch (e) {
+        console.error(e);
+      } finally {
+        await client.close();
+      }
+    }
+    main().catch(console.error);
+
+    //creating a electronic post / listing
+    async function createListing(client, newListing) {
+      const result = await client
+        .db("carsDB")
+        .collection("carsPosts")
+        .insertOne(newListing);
+
+      console.log(
+        `New listing created with the following id: ${result.insertedId}`
+      );
+    }
+
+    //list db in our mongoDB clusters
+    // async function listDatabases(client) {
+    //   const databasesList = await client.db().admin().listDatabases();
+    //   console.log("Databases:");
+    //   databasesList.databases.forEach((db) => {
+    //     console.log(`- ${db.name}`);
+    //   });
+    // }
+
+    // MongoDB cars connection ends here
   });
 });
 
