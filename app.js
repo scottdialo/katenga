@@ -191,7 +191,7 @@ app.get("/realEstateHome", function (req, res) {
       });
     }
 
-    // MongoDB connection ends heree
+    // MongoDB connection ends here
   });
 });
 
@@ -363,7 +363,6 @@ app.get("/electronicsPosts/:electronicPostName", function (req, res) {
 });
 
 //server route
-const port = process.env.PORT || 3000;
-app.listen(port, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
 });
